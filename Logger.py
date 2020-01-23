@@ -11,6 +11,7 @@ class Logger():
       os.mkdir(logdir)
 
   def set_title(self, title):
+    assert type(title)==type(""), f"title has to be type of string. Not {type(title)}"
     self.title = title
 
   def add_log(self, key, value):
@@ -20,7 +21,6 @@ class Logger():
 
   def save_logs(self, delimiter=","):
     assert not (self.title is None), "title must not be None, Please call Logger.set_title(string)"
-    assert type(self.title)==type(""), f"title has to be type of string. Not {type(self.title)}"
     if not os.path.exists(self.logdir+self.title):
       os.mkdir(self.logdir+self.title)
     for i in range(10000):
